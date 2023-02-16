@@ -1,0 +1,1173 @@
+#include <stdio.h>
+#include <windows.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>
+#include <time.h>
+#define phi 3.142857142857
+
+void gotoxy(int x, int y){
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+void delay(unsigned int mseconds){
+    clock_t goal = mseconds + clock();
+    while (goal > clock());
+}
+
+void animasi(){
+    system("color F0");
+    int x , a = 254;
+    gotoxy(30,8); printf("|======================|\n");
+    gotoxy(30,9); printf("|   Angelina Sekar Ayu |\n");
+    gotoxy(30,10); printf("|======================|\n");
+    gotoxy(35,11);printf("Loading. . .\t\n");
+    for(x=1; x<=10; x++){
+        printf("\t%c",a);
+        delay(400);
+    }// Akhir Script Animasi
+    return 0;
+}getch();
+
+void panah(int rp,int ap){
+    if(rp == ap){
+        printf("==>");
+    }else{
+        printf("   ");
+    }
+}
+
+void main(){
+    animasi();
+    system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Tugas Kalkulator");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. PingPoroLanSudo");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. SinCosTan");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Hitung Keliling dan Luas");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Hitung Akar Kuadrat");
+        gotoxy(2,9);
+        panah(5,posisi); printf(" 5. Exit");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1 :
+            system("cls");
+            system("COLOR F8");
+
+            pingporolansudo();
+
+            system("pause");
+            main();
+            break;
+
+        case 2 :
+            system("cls");
+            system("COLOR F8");
+
+            sincostan();
+
+            system("pause");
+            main();
+            break;
+
+        case 3 :
+            system("cls");
+            system("COLOR F8");
+
+            hitungkelilingluas();
+
+            system("pause");
+            main();
+            break;
+
+        case 4:
+            system("cls");
+            system("COLOR F8");
+
+            hitungakarkuadrat();
+
+            system("pause");
+            main();
+            break;
+
+        case 5:
+            system("cls");
+            system("COLOR F8");
+
+            animasi();
+
+            system("pause");
+            main();
+            exit(0);
+    }
+}
+
+void pingporolansudo(){
+    system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Ping Poro Lan Sudo");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Perkalian");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Pembagian");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Penjumlahan");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Pengurangan");
+        gotoxy(2,9);
+        panah(5,posisi); printf(" 5. Return Menu Utama");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            perkalian();
+            system("pause");
+            pingporolansudo(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            pembagian();
+            system("pause");
+            pingporolansudo(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            penjumlahan();
+            system("pause");
+            pingporolansudo(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            pengurangan();
+            system("pause");
+            pingporolansudo(0);
+        case 5:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            main(0);
+    }
+}
+
+void perkalian(){
+    system("cls");
+    system("COLOR F8");
+
+    float kalia, kalib, jumlahkali;
+    char pilih;
+    printf("Masukkan angka pertama = ");
+    scanf("%f",&kalia);
+    printf("Masukkan angka kedua = ");
+    scanf("%f",&kalib);
+    jumlahkali = kalia*kalib;
+    printf("Hasil dari %.2f * %.2f adalah = %.2f\n", kalia,kalib,jumlahkali);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Perkalian? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        perkalian(0);
+    }else if(pilih == 'n'){
+        pingporolansudo(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void pembagian(){
+    system("cls");
+    system("COLOR F8");
+
+    float bagia, bagib, jumlahbagi;
+    char pilih;
+    printf("Masukkan angka pertama = ");
+    scanf("%f",&bagia);
+    printf("Masukkan angka kedua = ");
+    scanf("%f",&bagib);
+    jumlahbagi = bagia/bagib;
+    printf("Hasil dari %.2f / %.2f adalah = %.2f\n", bagia,bagib,jumlahbagi);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Pembagian? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        pembagian(0);
+    }else if(pilih == 'n'){
+        pingporolansudo(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void penjumlahan(){
+    system("cls");
+    system("COLOR F8");
+
+    float plusa, plusb, jumlahplus;
+    char pilih;
+    printf("Masukkan angka pertama = ");
+    scanf("%f",&plusa);
+    printf("Masukkan angka kedua = ");
+    scanf("%f",&plusb);
+    jumlahplus = plusa+plusb;
+    printf("Hasil dari %.2f + %.2f adalah = %.2f\n", plusa,plusb,jumlahplus);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Penjumlahan? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        penjumlahan(0);
+    }else if(pilih == 'n'){
+        pingporolansudo(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void pengurangan(){
+    system("cls");
+    system("COLOR F8");
+
+    float minusa, minusb, jumlahminus;
+    char pilih;
+    printf("Masukkan angka pertama = ");
+    scanf("%f",&minusa);
+    printf("Masukkan angka kedua = ");
+    scanf("%f",&minusb);
+    jumlahminus = minusa-minusb;
+    printf("Hasil dari %.2f - %.2f adalah = %.2f\n", minusa,minusb,jumlahminus);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Pengurangan? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        pengurangan(0);
+    }else if(pilih == 'n'){
+        pingporolansudo(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void sincostan(){
+	system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Sin Cos Tan");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Sinus");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Cosinus");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Tangen");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Return Menu Utama");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            sinus();
+            system("pause");
+            sincostan(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            cosinus();
+            system("pause");
+            sincostan(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            tangen();
+            system("pause");
+            sincostan(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            main(0);
+    }
+}
+
+void sinus(){
+    system("cls");
+    system("COLOR F8");
+
+    float sudut, hasil;
+    char pilih;
+    printf("Masukkan derajat sinus = ");
+    scanf("%f",&sudut);
+    sudut = (sudut * phi) / 180;
+    hasil = sin(sudut);
+    printf("Hasil dari %.2f adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Sinus? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        sinus(0);
+    }else if(pilih == 'n'){
+    	sincostan(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void cosinus(){
+    system("cls");
+    system("COLOR F8");
+
+    float derajat, hasil;
+    char pilih;
+    printf("Masukkan derajat cos = ");
+    scanf("%f",&derajat);
+    derajat = (derajat * phi) / 180;
+	hasil = cos(derajat);
+    printf("Hasil dari %.2f adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Sinus? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        cos(0);
+    }else if(pilih == 'n'){
+    	sincostan(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void tangen(){
+    system("cls");
+    system("COLOR F8");
+
+    float derajat, hasil;
+    char pilih;
+    printf("Masukkan derajat tan = ");
+    scanf("%f",&derajat);
+    derajat = (derajat * phi) / 180;
+	hasil = tan(derajat);
+    printf("Hasil dari %.2f adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Tangen? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        tan(0);
+    }else if(pilih == 'n'){
+    	sincostan(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void hitungkelilingluas(){
+	system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Keliling Luas Volume");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Hitung Keliling Bangun Datar");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Hitung Luas Bangun Datar");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Hitung Volume Bangun Ruang");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Return Menu Utama");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            submenu1();
+            system("pause");
+            hitungkelilingluas(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            submenu2();
+            system("pause");
+            hitungkelilingluas(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            submenu3();
+            system("pause");
+            hitungkelilingluas(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            main(0);
+    }
+}
+
+void submenu1(){
+	system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Keliling Bangun Datar");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Keliling Persegi");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Keliling Trapesium");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Keliling Layang-layang");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Keliling Lingkaran");
+        gotoxy(2,9);
+        panah(5,posisi); printf(" 5. Return Menu Sebelumnya");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            kel_persegi();
+            system("pause");
+            submenu1(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            kel_trapesium();
+            system("pause");
+            submenu1(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            kel_layang();
+            system("pause");
+            submenu1(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            kel_lingkaran();
+            system("pause");
+            submenu1(0);
+        case 5:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            hitungkelilingluas(0);
+    }
+}
+
+void kel_persegi(){
+    system("cls");
+    system("COLOR F8");
+
+    float c, d, hasil;
+    char pilih;
+    printf("Masukkan panjang persegi = ");
+    scanf("%f",&c);
+    printf("Masukkan lebar persegi = ");
+    scanf("%f",&d);
+    hasil = 2*(c+d);
+	printf("Keliling Persegi Adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Keliling Persegi? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        kel_persegi(0);
+    }else if(pilih == 'n'){
+    	submenu1(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void kel_trapesium(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,e,hasil,tinggi=0.5,tampung;
+    char pilih;
+    printf("Masukkan Sisi Atas Trapesium Sama Kaki : ");
+    scanf("%f", &c);
+	printf("Masukkan Sisi Bawah Trapesium Sama Kaki   : ");
+    scanf("%f", &d);
+    printf("Masukkan Sisi Miring Trapesium Sama Kaki   : ");
+    scanf("%f", &e);
+    hasil=tinggi*(c+d);
+    tampung=hasil;
+    printf("Keliling Trapesium Sama Kaki adalah = %.2f\n", tampung+c+d+e);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Keliling Trapesium? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        kel_trapesium(0);
+    }else if(pilih == 'n'){
+    	submenu1(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void kel_layang(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,hasil;
+    char pilih;
+    printf("Masukkan Panjang Sisi Atas : ");
+    scanf("%f", &c);
+    printf("Masukkan Panjang Sisi Bawah   : ");
+    scanf("%f", &d);
+    hasil =2*(c+d);
+    printf("Keliling Layang-Layang adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Keliling Layang-layang? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        kel_layang(0);
+    }else if(pilih == 'n'){
+    	submenu1(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void kel_lingkaran(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,rumusd,rumusr;
+    float jari2 =3.14;
+    char pilih;
+    printf("Masukkan Panjang Diameter : : ");
+    scanf("%f", &c);
+    printf("Masukkan Panjang Jari-jari   : ");
+    scanf("%f", &d);
+    rumusd=jari2*c;
+    rumusr=2*(jari2*d);
+    printf("Keliling Lingkaran berdasar Diameter = %.2f\n", rumusd);
+    printf("Keliling Lingkaran berdasar Jari-Jari = %.2f\n", rumusr);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Keliling Lingkaran? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        kel_lingkaran(0);
+    }else if(pilih == 'n'){
+    	submenu1(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void submenu2(){
+	system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Luas Bangun Datar");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Luas Persegi");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Luas Trapesium");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Luas Layang-layang");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Luas Lingkaran");
+        gotoxy(2,9);
+        panah(5,posisi); printf(" 5. Return Menu Sebelumnya");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            luas_persegi();
+            system("pause");
+            submenu2(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            luas_trapesium();
+            system("pause");
+            submenu2(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            luas_layang();
+            system("pause");
+            submenu2(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            luas_lingkaran();
+            system("pause");
+            submenu2(0);
+        case 5:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            hitungkelilingluas(0);
+    }
+}
+
+void luas_persegi(){
+    system("cls");
+    system("COLOR F8");
+
+    float c, d, hasil;
+    float jari2 =3.14;
+    char pilih;
+    printf("Masukan Panjang Persegi : ");
+    scanf("%f", &c);
+    printf("Masukan Lebar Persegi   : ");
+    scanf("%f", &d);
+    hasil =c*d;
+    printf("Luas Persegi Adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Luas Persegi? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        luas_persegi(0);
+    }else if(pilih == 'n'){
+    	submenu2(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void luas_trapesium(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,e,hasil,tinggi=0.5,tampung;
+    char pilih;
+    printf("Masukkan Sisi Atas Trapesium Sama Kaki : ");
+    scanf("%f", &c);
+    printf("Masukkan Sisi Bawah Trapesium Sama Kaki   : ");
+    scanf("%f", &d);
+    printf("Masukkan Sisi Miring Trapesium Sama Kaki   : ");
+    scanf("%f", &e);
+    hasil=tinggi*(c+d);
+    tampung=hasil;
+    printf("Luas Trapesium Sama Kaki adalah = %.2f\n", 0.5*(c+d)*tampung);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Luas Trapesium? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        luas_trapesium(0);
+    }else if(pilih == 'n'){
+    	submenu2(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void luas_layang(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,hasil;
+    char pilih;
+    printf("Masukkan Diagonal 1 : ");
+    scanf("%f", &c);
+    printf("Masukkan Diagonal 2   : ");
+    scanf("%f", &d);
+    hasil =0.5*(c*d);
+    printf("Luas Layang-Layang adalah = %.2f\n", hasil);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Luas Layang-Layang? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        luas_layang(0);
+    }else if(pilih == 'n'){
+    	submenu2(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void luas_lingkaran(){
+    system("cls");
+    system("COLOR F8");
+
+    float c,d,rumusd,rumusr;
+    float jari2=3.14;
+    char pilih;
+    printf("Masukkan Panjang Diameter : : ");
+    scanf("%f", &c);
+    printf("Masukkan Panjang Jari-jari   : ");
+    scanf("%f", &d);
+    rumusd=0.25*jari2*(c*c);
+    rumusr=jari2*(d*d);
+    printf("Keliling Lingkaran berdasar Diameter = %.2f\n", rumusd);
+    printf("Keliling Lingkaran berdasar Jari-Jari = %.2f\n", rumusr);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Luas Lingkaran? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        luas_lingkaran(0);
+    }else if(pilih == 'n'){
+    	submenu2(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void submenu3(){
+	system("cls");
+    system("COLOR F8");
+    gotoxy(2,2);
+    printf("================");
+    gotoxy(2,3);
+    printf("Volume Bangun Ruang");
+    gotoxy(2,4);
+    printf("================");
+    gotoxy(2,10);
+    printf("================");
+    int posisi = 1;
+    int tekan = 0;
+    while(tekan != 13){
+        gotoxy(2,5);
+        panah(1,posisi); printf(" 1. Volume Kubus");
+        gotoxy(2,6);
+        panah(2,posisi); printf(" 2. Volume Prisma");
+        gotoxy(2,7);
+        panah(3,posisi); printf(" 3. Volume Limas");
+        gotoxy(2,8);
+        panah(4,posisi); printf(" 4. Volume Bola");
+        gotoxy(2,9);
+        panah(5,posisi); printf(" 5. Return Menu Sebelumnya");
+        tekan = getch();
+        if(tekan == 80 && posisi !=5){
+            posisi++;
+        }else if(tekan == 72 && posisi !=1){
+            posisi--;
+        }else{
+            posisi = posisi;
+        }
+    }int x = posisi;
+
+    switch(x){
+        case 1:
+            system("cls");
+            system("COLOR F8");
+            volume_kubus();
+            system("pause");
+            submenu3(0);
+        case 2:
+            system("cls");
+            system("COLOR F8");
+            volume_prisma();
+            system("pause");
+            submenu3(0);
+        case 3:
+            system("cls");
+            system("COLOR F8");
+            volume_limas();
+            system("pause");
+            submenu3(0);
+        case 4:
+            system("cls");
+            system("COLOR F8");
+            volume_bola();
+            system("pause");
+            submenu3(0);
+        case 5:
+            system("cls");
+            system("COLOR F8");
+            //printf("Kembali ke Menu\n");
+            //system("pause");
+            hitungkelilingluas(0);
+    }
+}
+
+void volume_kubus(){
+    system("cls");
+    system("COLOR F8");
+
+    float b;
+    char pilih;
+    printf("Masukkan Panjang Sisi Kubus : ");
+    scanf("%f", &b);
+    printf("Volume Kubus adalah = %.2f\n", b*b*b);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Volume Kubus? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        volume_kubus(0);
+    }else if(pilih == 'n'){
+    	submenu3(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void volume_prisma(){
+    system("cls");
+    system("COLOR F8");
+
+    float a,b,c,d,e,f,hasil,tinggi=0.5,tampung,jari2=3.14;
+    char pilih;
+    printf("Masukkan Sisi Persegi : ");
+    scanf("%f", &a);
+    printf("Masukkan Lebar Alas Segitiga : ");
+    scanf("%f", &b);
+    printf("Masukkan Tinggi Segitiga : ");
+    scanf("%f", &c);
+    printf("Masukkan Jari-Jari Lingkaran :");
+    scanf("%f", &d);
+    printf("Masukkan Diameter Lingkaran :");
+    scanf("%f", &e);
+    printf("Masukkan Tinggi Prisma :");
+    scanf("%f", &f);
+    printf("Volume Prisma Persegi adalah = %.2f\n", a*a*a);
+    printf("Volume Prisma Segitiga adalah = %.2f\n", ((b*c)/2)*f);
+    printf("Volume Silinder berdasar Jari-Jari adalah = %.2f\n", jari2*(d*d*f));
+    printf("Volume Silinder berdasar Diameter adalah = %.2f\n", 0.25*jari2*(e*e)*f);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Volume Prisma? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        volume_prisma(0);
+    }else if(pilih == 'n'){
+    	submenu3(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void volume_limas(){
+    system("cls");
+    system("COLOR F8");
+
+    float a,b,c,d,e,f,hasil,tinggi=0.5,tampung,jari2=3.14,luas_alas,rdiameter;
+    char pilih;
+    printf("\n1. Volum Prisma :\n");
+    printf("Masukkan Sisi Persegi : ");
+    scanf("%f", &a);
+    printf("Masukkan Lebar Alas Segitiga : ");
+    scanf("%f", &b);
+    printf("Masukkan Tinggi Segitiga : ");
+    scanf("%f", &c);
+    printf("Masukkan Jari-Jari Lingkaran :");
+    scanf("%f", &d);
+    printf("Masukkan Diameter Lingkaran :");
+    scanf("%f", &e);
+    printf("Masukkan Tinggi Limas :");
+    scanf("%f", &f);
+    luas_alas=0.5*b*f;
+    rdiameter=e/2;
+    printf("Volume Limas Persegi adalah = %.2f\n", 0.33*a*a*f);
+    printf("Volume Limas Segitiga adalah = %.2f\n", 0.33*luas_alas*f);
+    printf("Volume Limas Silinder berdasar Jari-Jari adalah = %.2f\n", jari2*d*d*f);
+    printf("Volume Limas Silinder berdasar Diameter adalah = %.2f\n", jari2*rdiameter*rdiameter*f);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Volume Limas? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        volume_limas(0);
+    }else if(pilih == 'n'){
+    	submenu3(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void volume_bola(){
+    system("cls");
+    system("COLOR F8");
+
+    float a,b,rdiameter,tampung2;
+    float jari2=3.14;
+    char pilih;
+    printf("\n1. Volume Bola :\n");
+    printf("Masukkan Jari-Jari Lingkaran : ");
+    scanf("%f", &a);
+    printf("Masukkan Diameter Lingkaran : ");
+    scanf("%f", &b);
+    rdiameter=b/2;
+    printf("Keliling Lingkaran berdasar Jari-Jari = %.2f\n", 1.33*jari2*a*a*a);
+    printf("Keliling Lingkaran berdasar Diameter = %.2f\n", 1.33*jari2*rdiameter*rdiameter*rdiameter);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang Volume Bola? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        volume_bola(0);
+    }else if(pilih == 'n'){
+    	submenu3(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
+
+void hitungakarkuadrat(){
+    system("cls");
+    system("COLOR F8");
+
+    float inputan;
+    double tampung;
+    char pilih;
+    printf ("Masukkan bilangan yang akan diakar = ");
+    scanf (" %f", &inputan);
+    tampung = sqrt(inputan);
+    printf (" \nHasil akar dari %.2f adalah %.2f\n", inputan, tampung);
+    system("pause");
+    fflush(stdin);
+
+    ulang:
+    printf("Ingin mengulang lagi? (y/n)");
+    scanf("%c",&pilih);
+    system("cls");
+    if(pilih == 'y'){
+        hitungakarkuadrat(0);
+    }else if(pilih == 'n'){
+    	main(0);
+    }else{
+        printf("\nPilihan tidak tersedia\n");
+        fflush(stdin);
+        goto ulang;
+    }
+    system("pause");
+}
